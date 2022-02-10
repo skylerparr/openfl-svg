@@ -1,4 +1,5 @@
 package svg.elements;
+import openfl.display.Sprite;
 import svg.core.BaseSVG;
 import svg.core.Styles;
 import svg.core.SVGElement;
@@ -28,7 +29,7 @@ class SVG extends BaseSVG implements SVGElement {
         styles = new Styles();
     }
 
-    public function render(doc:DOC, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
         if (x != null) {
             doc.x = x;
         }

@@ -1,4 +1,5 @@
 package svg.elements;
+import openfl.display.Sprite;
 import svg.core.BaseSVG;
 import svg.core.SVGElement;
 @:build(macros.SVGHelper.build())
@@ -16,7 +17,7 @@ class Text extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(doc:DOC, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
         var textField: view.Text = new view.Text();
         textField.init();
         text = inner_content;

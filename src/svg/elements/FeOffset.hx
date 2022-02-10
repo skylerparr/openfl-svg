@@ -1,4 +1,7 @@
 package svg.elements;
+import openfl.display.Bitmap;
+import openfl.display.BitmapData;
+import openfl.display.Sprite;
 import svg.core.BaseSVG;
 import svg.core.SVGElement;
 import svg.core.SVGFilter;
@@ -12,31 +15,26 @@ class FeOffset extends BaseSVG implements SVGElement implements SVGFilter {
         super();
     }
 
-    public function render(doc:DOC, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
     }
 
-    public function applyFilter(bmp:Dynamic, resultMap: Map<String, Dynamic>):Void {
-        var container: DOC = new DOC();
-        container.init();
-        container._sprite.addChild(bmp);
+    public function applyFilter(bmp:Bitmap, resultMap: Map<String, Dynamic>):Void {
+        var container: Sprite = new Sprite();
+        container.addChild(bmp);
 
-        var bd = Native.getProperty(bmp, "bitmapData");
-        var outBitmapData = ClassUtil.createInstance(ClassConstants.BITMAP_DATA, [bd.width, bd.height]);
-        Native.call(outBitmapData, "copyPixels", [bd, bd.rect, BaseSVG.point]);
+        var bd = bmp.bitmapData;
+        var outBitmapData = new BitmapData(bd.width, bd.height);
+        outBitmapData.copyPixels(bd, bd.rect, BaseSVG.point);
 
-        var bmpCopy = ClassUtil.createInstance(ClassConstants.BITMAP, [outBitmapData]);
-        Native.setProperty(bmpCopy, "x", dx);
-        Native.setProperty(bmpCopy, "y", dy);
+        var bmpCopy = new Bitmap(outBitmapData);
+        bmpCopy.x = dx;
+        bmpCopy.y = dy;
 
-        container._sprite.addChild(bmpCopy);
-        var finalBd = ClassUtil.createInstance(ClassConstants.BITMAP_DATA, [bd.width, bd.height]);
-        Native.call(finalBd, "draw", [container._sprite]);
+        container.addChild(bmpCopy);
+        var finalBd = new BitmapData(bd.width, bd.height);
+        finalBd.draw(container);
 
-        Native.setProperty(bmp, "bitmapData", finalBd);
-
-        var layer = DOCLayerManager.getLayerByName(LayerNames.UI_DESIGNER_MODAL);
-        container.x = 400;
-        layer.addChild(container);
+        bmp.bitmapData = finalBd;
 
         Filter.setResult(resultMap, result, outBitmapData);
     }

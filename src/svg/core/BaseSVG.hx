@@ -242,7 +242,7 @@ class BaseSVG {
         return args;
     }
 
-    public function parseAndApplyTransformations(doc: DOC): Void {
+    public function parseAndApplyTransformations(doc: Sprite): Void {
         var transforms: Array<Dynamic> = [];
         var func: String = "";
         var str: String = "";

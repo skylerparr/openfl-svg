@@ -1,4 +1,7 @@
 package svg.elements;
+import openfl.geom.Matrix;
+import util.MathUtil;
+import openfl.display.Sprite;
 import svg.core.BaseSVG;
 import svg.core.SVGElement;
 @:build(macros.SVGHelper.build({skipChild: true}))
@@ -17,8 +20,8 @@ class LinearGradient extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(doc:DOC, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
-        var matr: Dynamic = ClassUtil.createInstance(ClassConstants.MATRIX);
+    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+        var matr: Matrix = new Matrix();
         var rotation: Float = MathUtil.degreesToRadians(0);
         if (gradientTransform != null) {
             if (StringTools.startsWith(gradientTransform, "rotate")) {

@@ -1,4 +1,5 @@
 package svg.elements;
+import openfl.display.Sprite;
 import svg.core.BaseSVG;
 import svg.core.SVGElement;
 @:build(macros.SVGHelper.build({skipBounds: true}))
@@ -13,7 +14,7 @@ class Use extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(doc:DOC, defs: Map<String,SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs: Map<String,SVGElement>, inherit:SVGElement = null):Void {
         if(href != null) {
             href = StringTools.replace(href, "#", "");
             if(x != null) {

@@ -1,8 +1,7 @@
 package svg.elements;
 import openfl.geom.Rectangle;
 import openfl.display.Bitmap;
-import openfl.filters.ColorMatrixFilter.ColorMatrixShader;
-import flash.display.BitmapData;
+import openfl.display.BitmapData;
 import util.MathUtil;
 import openfl.display.Sprite;
 import svg.core.BaseSVG;
@@ -41,8 +40,8 @@ class FeColorMatrix extends BaseSVG implements SVGElement implements SVGFilter {
     public function render(sprite:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
     }
 
-    public function applyFilter(bmp:Bitmap, resultMap: Map<String, Dynamic>):Void {
-        var colorMatrix = new ColorMatrixShader();
+    public function applyFilter(bmp:Bitmap, resultMap: Map<String, BitmapData>):Void {
+        var colorMatrix = new openfl.filters.ColorMatrixFilter();
         if (values != null) {
             if (type == "saturate") {
                 var value:Float = values[0];

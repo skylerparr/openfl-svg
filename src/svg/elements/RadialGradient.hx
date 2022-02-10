@@ -1,4 +1,7 @@
 package svg.elements;
+import openfl.geom.Matrix;
+import util.MathUtil;
+import openfl.display.Sprite;
 import svg.core.BaseSVG;
 import svg.core.SVGElement;
 @:build(macros.SVGHelper.build({skipChild: true}))
@@ -19,8 +22,8 @@ class RadialGradient extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(doc:DOC, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
-        var matr: Dynamic = ClassUtil.createInstance(ClassConstants.MATRIX);
+    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+        var matr: Matrix = new Matrix();
         var rotation: Float = MathUtil.degreesToRadians(0);
         if (gradientTransform != null) {
             if (StringTools.startsWith(gradientTransform, "rotate")) {
@@ -40,7 +43,7 @@ class RadialGradient extends BaseSVG implements SVGElement {
 
         matr.createGradientBox(100, 100, rotation, fx, fy);
 
-        var gt = Native.callStatic("OpenFL", "getGradientType", [1]);
+        var gt = OpenFL.getGradientType(1);
         graphics.beginGradientFill(gt, colors, [1, 1], ratios, matr, 0);
     }
 }

@@ -1,4 +1,4 @@
-package
+package svg;
 import svg.SVGParser;
 import svg.elements.SVG;
 import sys.io.File;

@@ -1,7 +1,6 @@
 package macros;
 import haxe.macro.Type.Ref;
 import haxe.macro.Type.ClassType;
-import macros.MacroLogger;
 import haxe.macro.Printer;
 import haxe.macro.ExprTools;
 import haxe.macro.Context;
@@ -164,7 +163,6 @@ class SVGHelper {
         if(!skipChild) {
             renderChild = macro {
                 renderSprite = new Sprite();
-                renderSprite.init();
                 sprite.addChild(renderSprite);
                 trueGraphics = SVGRender.getGraphics(renderSprite);
                 sprite = renderSprite;
@@ -185,7 +183,6 @@ class SVGHelper {
             };
             ${renderChild}
             ${renderBounds}
-            this.sprite = sprite;
             sprite.name = id;
             if(styles != null) {
                 styles.applyTopLevelStyle(this, this.name);
@@ -278,7 +275,10 @@ class SVGHelper {
                     var el:SVGElement = SVGParser.parseXml(xml);
                     el.styles = styles;
 
-                    var nodeValue = Native.getNodeValue(xml);
+                    var nodeValue:String = null;
+                    if(xml.firstChild() != null) {
+                      nodeValue = xml.firstChild().nodeValue;
+                    }
                     if(nodeValue != null) {
                         Reflect.setField(el, "inner_content", nodeValue);
                     }

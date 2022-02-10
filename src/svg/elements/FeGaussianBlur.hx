@@ -1,4 +1,6 @@
 package svg.elements;
+import openfl.display.BitmapData;
+import openfl.filters.BitmapFilter;
 import openfl.display.Bitmap;
 import flash.filters.BlurFilter;
 import openfl.display.Sprite;
@@ -18,9 +20,9 @@ class FeGaussianBlur extends BaseSVG implements SVGElement implements SVGFilter 
     public function render(sprite:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
     }
 
-    public function applyFilter(bmp:Bitmap, resultMap: Map<String, Dynamic>):Void {
+    public function applyFilter(bmp:Bitmap, resultMap: Map<String, BitmapData>):Void {
         var blur = new BlurFilter(stdDeviation, stdDeviation, 2);
-        var bd = bmp.bitmapData
+        var bd = bmp.bitmapData;
         var outBitmapData = Filter.getIn(resultMap, inn);
         var rect = bd.rect;
         rect = bd.generateFilterRect(rect, blur);

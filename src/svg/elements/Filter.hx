@@ -29,7 +29,7 @@ class Filter extends BaseSVG implements SVGElement {
         bmp.x = x;
         bmp.y = y;
         container.addChild(bmp);
-        var resultMap = new Map<String, Dynamic>();
+        var resultMap = new Map<String, BitmapData>();
         var bd = bmp.bitmapData;
         var sourceBitmapData = bmp.bitmapData.clone();
         resultMap.set("SourceGraphic", sourceBitmapData);
@@ -81,7 +81,7 @@ class Filter extends BaseSVG implements SVGElement {
         return outBitmapData;
     }
 
-    public static function setResult(resultMap:Map<String, Dynamic>, result:String, outBitmapData:Dynamic):Void {
+    public static function setResult(resultMap:Map<String, Dynamic>, result:String, outBitmapData:BitmapData):Void {
         if(result != null) {
             resultMap.set(result, outBitmapData);
         } else {
