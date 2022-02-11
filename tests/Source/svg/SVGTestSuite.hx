@@ -622,7 +622,6 @@ That\'s why the circles have different x positions, but the same stroke value.
     }
 
     public static inline function getAssetPath(): String {
-        trace(Sys.getCwd());
         var path = Sys.getCwd();
         path = StringTools.replace(path, "\\", "/");
         return '${StringTools.replace(path, "Export/windows/bin", "")}Assets/';

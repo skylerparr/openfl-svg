@@ -166,7 +166,7 @@ class BaseSVG {
                 var bmp = OpenFL.applyMask(sprite, el.sprite);
                 sprite.parent.addChild(bmp);
                 sprite.parent.removeChild(sprite);
-                el.sprite.removeChild(el.sprite);
+//                el.sprite.parent.removeChild(el.sprite);
             }
         }
         if(filter != null) {

@@ -9,7 +9,7 @@ import svg.core.SVGElement;
 import sys.io.File;
 class SVGTest {
 
-    public var testToRun: () -> svg.elements.SVG = SVGTestSuite.testSVG;
+    public var testToRun: () -> svg.elements.SVG = SVGTestSuite.testMask;
     public var allTests: Array<svg.TestUtils.TestUnit> = SVGTestSuite.allTests();
     public var currentIndex: Int = 0;
 
