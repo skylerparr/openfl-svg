@@ -29,12 +29,12 @@ class SVG extends BaseSVG implements SVGElement {
         styles = new Styles();
     }
 
-    public function render(sprite:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
         if (x != null) {
-            sprite.x = x;
+            doc.x = x;
         }
         if (y != null) {
-            sprite.y = y;
+            doc.y = y;
         }
 
         if (viewBox == null) {
@@ -47,22 +47,22 @@ class SVG extends BaseSVG implements SVGElement {
         }
 
         if (width != null && height == null) {
-            sprite.scaleX = width / viewBox.width;
-            sprite.scaleY = width / viewBox.width;
+            doc.scaleX = width / viewBox.width;
+            doc.scaleY = width / viewBox.width;
         } else if (width == null && height != null) {
-            sprite.scaleX = height / viewBox.height;
-            sprite.scaleY = height / viewBox.height;
+            doc.scaleX = height / viewBox.height;
+            doc.scaleY = height / viewBox.height;
         }
 
-        sprite.x += viewBox.x;
-        sprite.y += viewBox.y;
+        doc.x += viewBox.x;
+        doc.y += viewBox.y;
 
         for (child in children) {
             if (Std.isOfType(child, Filter)) {
                 defs.set(child.id, child);
                 continue;
             }
-            child.render(sprite, defs, this);
+            child.render(doc, defs, this);
         }
         graphics.endFill();
     }

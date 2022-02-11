@@ -20,13 +20,13 @@ class Text extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(sprite:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
         var textField: TextField = new TextField();
         var textFormat: TextFormat = new TextFormat();
         text = inner_content;
-        sprite.addChild(textField);
-        sprite.x = x;
-        sprite.y = y;
+        doc.addChild(textField);
+        doc.x = x;
+        doc.y = y;
 
         if(font_size != null) {
             textFormat.size = Std.parseInt(font_size);

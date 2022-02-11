@@ -1,7 +1,7 @@
 package svg.core;
 import openfl.display.Sprite;
 interface SVGElement {
-    var sprite: Sprite;
+    var doc: Sprite;
     var id: String;
     var styles: Styles;
     var name: String;

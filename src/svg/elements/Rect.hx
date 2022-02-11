@@ -17,12 +17,12 @@ class Rect extends BaseSVG implements SVGElement{
         super();
     }
 
-    public function render(sprite:Sprite, defs: Map<String,SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs: Map<String,SVGElement>, inherit:SVGElement = null):Void {
         if(x != null) {
-            sprite.x += x;
+            doc.x += x;
         }
         if(y != null) {
-            sprite.y += y;
+            doc.y += y;
         }
         if(rx == null && ry == null) {
             graphics.drawRect(0, 0, width, height);
@@ -36,7 +36,7 @@ class Rect extends BaseSVG implements SVGElement{
             graphics.drawRoundRect(0, 0, width, height, rx, ry);
         }
         for (child in children) {
-            child.render(sprite, defs, this);
+            child.render(doc, defs, this);
         }
         graphics.endFill();
     }

@@ -18,14 +18,14 @@ class Filter extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(sprite:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
         var container:Sprite = new Sprite();
-        container.x = sprite.x;
-        container.y = sprite.y;
+        container.x = doc.x;
+        container.y = doc.y;
 
-        var bmp = BitmapUtil.createBitmap(sprite);
-        sprite.parent.addChild(container);
-        sprite.parent.removeChild(sprite);
+        var bmp = OpenFL.createBitmap(doc);
+        doc.parent.addChild(container);
+        doc.parent.removeChild(doc);
         bmp.x = x;
         bmp.y = y;
         container.addChild(bmp);

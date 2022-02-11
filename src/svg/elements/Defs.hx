@@ -10,7 +10,7 @@ class Defs extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(sprite:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
         for(child in children) {
             defs.set(child.id, child);
         }

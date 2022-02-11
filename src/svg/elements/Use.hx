@@ -14,26 +14,26 @@ class Use extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(sprite:Sprite, defs: Map<String,SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs: Map<String,SVGElement>, inherit:SVGElement = null):Void {
         if(href != null) {
             href = StringTools.replace(href, "#", "");
             if(x != null) {
-                sprite.x = x;
+                doc.x = x;
             }
             if(y != null) {
-                sprite.y = y;
+                doc.y = y;
             }
             if(width != null) {
-                sprite.width = width;
+                doc.width = width;
             }
             if(height != null) {
-                sprite.height = height;
+                doc.height = height;
             }
 
             var ref: SVGElement = defs.get(href);
             if(ref != null) {
                 var toRender: SVGElement = ref.clone();
-                toRender.render(sprite, defs, this);
+                toRender.render(doc, defs, this);
                 graphics.endFill();
             } else {
                 trace('attempted to use an undefined svg element ${href}');

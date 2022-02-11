@@ -15,10 +15,10 @@ class Ellipse extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(sprite: Sprite, defs: Map<String,SVGElement>, inherit: SVGElement = null): Void {
+    public function render(doc: Sprite, defs: Map<String,SVGElement>, inherit: SVGElement = null): Void {
         graphics.drawEllipse(cx, cy, rx, ry);
         for (child in children) {
-            child.render(sprite, defs, this);
+            child.render(doc, defs, this);
         }
         graphics.endFill();
     }

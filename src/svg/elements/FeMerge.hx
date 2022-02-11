@@ -13,7 +13,7 @@ class FeMerge extends BaseSVG implements SVGElement implements SVGFilter {
         super();
     }
 
-    public function render(sprite:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
     }
 
     public function applyFilter(bitmap:Bitmap, resultMap: Map<String, BitmapData>):Void {

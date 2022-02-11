@@ -1,11 +1,12 @@
 package svg.core;
 import openfl.display.Graphics;
-import util.MathUtil;
-import openfl.display.Sprite;
-import openfl.geom.Matrix;
 import openfl.geom.Rectangle;
 import openfl.geom.Point;
+import openfl.display.Sprite;
+import openfl.geom.Matrix;
 import svg.core.SVGElement;
+import util.ClassUtil;
+import util.MathUtil;
 class BaseSVG {
     public static var point: Point = new Point();
     public static var rect: Rectangle = new Rectangle();
@@ -106,7 +107,7 @@ class BaseSVG {
         return link;
     }
 
-    public function initialDraw(sprite: Sprite, defs: Map<String, SVGElement>, graphics: Graphics): Void {
+    public function initialDraw(doc: Sprite, defs: Map<String, SVGElement>, graphics: Graphics): Void {
         if(style != null) {
             var css = parseCSSNode(style);
             var fields: Array<String> = Reflect.fields(css);
@@ -142,31 +143,31 @@ class BaseSVG {
             var el: SVGElement = getById(defs, fill);
             if(el != null) {
                 var clone: SVGElement = el.clone();
-                clone.render(sprite, defs, null);
+                clone.render(doc, defs, null);
             }
         }
 
         if(opacity != null) {
             var value: Float = Std.parseFloat(opacity);
-            sprite.alpha = value;
+            doc.alpha = value;
         }
 
         // Transformations should not be inherited, since it's
         // already inherited from the display tree
-        applyTransformations(sprite);
+        applyTransformations(doc);
         transform = null;
     }
 
-    public function postDraw(sprite: Sprite, defs: Map<String, SVGElement>, graphics: Graphics): Void {
+    public function postDraw(doc: Sprite, defs: Map<String, SVGElement>, graphics: Graphics): Void {
         if(mask != null) {
             var link: String = getLink(mask);
             var el: SVGElement = defs.get(link);
             if(el != null) {
                 el = el.clone();
-                var bmp = OpenFL.applyMask(sprite, el.sprite);
-                sprite.parent.addChild(bmp);
-                sprite.parent.removeChild(sprite);
-//                el.sprite.parent.removeChild(el.sprite);
+                var bmp = OpenFL.applyMask(doc, el.doc);
+                doc.parent.addChild(bmp);
+                doc.parent.removeChild(doc);
+                el.doc.parent.removeChild(el.doc);
             }
         }
         if(filter != null) {
@@ -174,7 +175,7 @@ class BaseSVG {
             var el: SVGElement = defs.get(link);
             if(el != null) {
                 el = el.clone();
-                el.render(sprite, defs);
+                el.render(doc, defs);
             }
         }
     }
@@ -212,13 +213,13 @@ class BaseSVG {
         return retVal;
     }
 
-    public function applyTransformations(sprite: Sprite): Void {
+    public function applyTransformations(doc: Sprite): Void {
         if(transform == null) {
             return;
         }
-        displayMatrix = getMatrix(sprite);
-        parseAndApplyTransformations(sprite);
-        setMatrix(sprite, displayMatrix);
+        displayMatrix = getMatrix(doc);
+        parseAndApplyTransformations(doc);
+        setMatrix(doc, displayMatrix);
     }
 
     public static inline function extractArgs(str: String): Array<Null<Float>> {
@@ -271,12 +272,12 @@ class BaseSVG {
         }
     }
 
-    private inline function getMatrix(sprite: Sprite): Matrix {
-        return sprite.transform.matrix;
+    private inline function getMatrix(doc: Sprite): Matrix {
+        return doc.transform.matrix;
     }
 
-    private inline function setMatrix(sprite: Sprite, displayMatrix: Dynamic): Void {
-        sprite.transform.matrix = displayMatrix;
+    private inline function setMatrix(doc: Sprite, displayMatrix: Matrix): Void {
+       doc.transform.matrix = displayMatrix;
     }
 
     public function translate(x: Float, y: Float): Void {

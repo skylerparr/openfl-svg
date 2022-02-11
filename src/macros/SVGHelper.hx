@@ -95,7 +95,7 @@ class SVGHelper {
 
         var docField: Field = {
             pos: Context.currentPos(),
-            name: "sprite",
+            name: "doc",
             access: [APublic],
             kind: FVar(TPath({name: "Sprite", pack: ["openfl", "display"]}), null)
         }
@@ -159,13 +159,13 @@ class SVGHelper {
             }
         }
 
-        var renderChild = macro trueGraphics = sprite.graphics;
+        var renderChild = macro trueGraphics = SVGRender.getGraphics(doc);
         if(!skipChild) {
             renderChild = macro {
                 renderSprite = new Sprite();
-                sprite.addChild(renderSprite);
-                trueGraphics = sprite.graphics;
-                sprite = renderSprite;
+                doc.addChild(renderSprite);
+                trueGraphics = SVGRender.getGraphics(renderSprite);
+                doc = renderSprite;
             }
         }
 
@@ -183,7 +183,8 @@ class SVGHelper {
             };
             ${renderChild}
             ${renderBounds}
-            sprite.name = id;
+            this.doc = doc;
+            doc.name = id;
             if(styles != null) {
                 styles.applyTopLevelStyle(this, this.name);
             }
@@ -191,12 +192,12 @@ class SVGHelper {
                 styles.applyClassStyle(this, clazz);
             }
 
-            initialDraw(sprite, defs, trueGraphics);
+            initialDraw(doc, defs, trueGraphics);
             graphics = trueGraphics;
         }
 
         var post: Expr = macro {
-            postDraw(sprite, defs, graphics);
+            postDraw(doc, defs, graphics);
         }
 
         switch(renderFunction.kind) {

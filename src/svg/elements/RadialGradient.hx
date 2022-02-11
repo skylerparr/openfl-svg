@@ -1,9 +1,10 @@
 package svg.elements;
 import openfl.geom.Matrix;
-import util.MathUtil;
 import openfl.display.Sprite;
 import svg.core.BaseSVG;
 import svg.core.SVGElement;
+import util.ClassUtil;
+import util.MathUtil;
 @:build(macros.SVGHelper.build({skipChild: true}))
 class RadialGradient extends BaseSVG implements SVGElement {
     @prop public var gradientUnits: String;
@@ -22,7 +23,7 @@ class RadialGradient extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(sprite:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
         var matr: Matrix = new Matrix();
         var rotation: Float = MathUtil.degreesToRadians(0);
         if (gradientTransform != null) {
