@@ -9,11 +9,14 @@ import svg.core.SVGElement;
 import sys.io.File;
 class SVGTest {
 
-    public var testToRun: () -> svg.elements.SVG = SVGTestSuite.testChar;
+    public var testToRun: () -> svg.elements.SVG = SVGTestSuite.testSVG;
     public var allTests: Array<svg.TestUtils.TestUnit> = SVGTestSuite.allTests();
     public var currentIndex: Int = 0;
 
-    public function new() {
+    private var layer: Sprite;
+
+    public function new(container) {
+        layer = container;
     }
 
     public function renderTest(): Void {
@@ -27,7 +30,6 @@ class SVGTest {
         if(test != null) {
             trace(test.name);
             var svg: SVG = test.func();
-            var layer: DisplayObjectContainer = Lib.current.stage;
             clearChildren(layer);
             var svgDisplay = new Sprite();
             svgDisplay.x = 10;
@@ -39,7 +41,7 @@ class SVGTest {
             svgButton.mouseChildren = false;
             svgButton.graphics.clear();
             svgButton.graphics.beginFill(0, 0);
-            svgButton.graphics.drawRect(0, 0, layer.width, layer.height);
+            svgButton.graphics.drawRect(0, 0, layer.stage.stageWidth, layer.stage.stageHeight);
             svgButton.graphics.endFill();
             svgButton.addEventListener(MouseEvent.CLICK, function(me: MouseEvent): Void {
                 renderTest();
@@ -51,23 +53,12 @@ class SVGTest {
         }
     }
 
-    public static function renderPath(path: String): Void {
-        var layer: DisplayObjectContainer = Lib.current.stage;
-        clearChildren(layer);
-        var svgDisplay = new Sprite();
-        svgDisplay.x = 10;
-        svgDisplay.y = 10;
-        trace(Sys.getCwd());
-        var content = File.getContent('../../../${path}');
-        var svg = SVGParser.parse(content);
-        SVGRender.render(svg, svgDisplay, new Map<String, SVGElement>());
-        layer.addChild(svgDisplay);
-    }
-
     public static function clearChildren(container: DisplayObjectContainer): Void {
         while(container.numChildren > 0) {
             var child = container.removeChildAt(0);
-            clearChildren(child);
+            if(Std.isOfType(child, DisplayObjectContainer)) {
+                clearChildren(cast child);
+            }
         }
     }
 

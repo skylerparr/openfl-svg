@@ -66,7 +66,7 @@ class SVGParser {
             trace('you forgot to add the element to the map again skyler: ${nodeName}');
             return null;
         }
-        var obj: SVGElement = ClassUtil.createInstanceFromClass(cls);
+        var obj: SVGElement = util.ClassUtil.createInstanceFromClass(cls);
         obj.assignAttributes(xml);
 
         return obj;

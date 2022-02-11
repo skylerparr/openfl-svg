@@ -159,12 +159,12 @@ class SVGHelper {
             }
         }
 
-        var renderChild = macro trueGraphics = SVGRender.getGraphics(sprite);
+        var renderChild = macro trueGraphics = sprite.graphics;
         if(!skipChild) {
             renderChild = macro {
                 renderSprite = new Sprite();
                 sprite.addChild(renderSprite);
-                trueGraphics = SVGRender.getGraphics(renderSprite);
+                trueGraphics = sprite.graphics;
                 sprite = renderSprite;
             }
         }

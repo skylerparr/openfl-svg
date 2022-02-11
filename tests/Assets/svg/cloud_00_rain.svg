@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>resource/exports/cloud_00_rain</title>
+    <defs>
+        <linearGradient x1="62.0455605%" y1="0%" x2="37.9544395%" y2="82.9555599%" id="linearGradient-1">
+            <stop stop-color="#CCEBFF" offset="0%"></stop>
+            <stop stop-color="#CCEBFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="61.6720776%" y1="0%" x2="38.3279224%" y2="82.9555599%" id="linearGradient-2">
+            <stop stop-color="#CCEBFF" offset="0%"></stop>
+            <stop stop-color="#CCEBFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="64.0729086%" y1="0%" x2="35.9270914%" y2="82.9555599%" id="linearGradient-3">
+            <stop stop-color="#CCEBFF" offset="0%"></stop>
+            <stop stop-color="#CCEBFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="61.2661235%" y1="0%" x2="38.7338765%" y2="82.9555599%" id="linearGradient-4">
+            <stop stop-color="#CCEBFF" offset="0%"></stop>
+            <stop stop-color="#CCEBFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <path d="M9.55555556,0 C11.7019095,0 13.6278874,0.802786766 14.941333,2.074705 C15.2643992,2.04667658 15.5931764,2.03252033 15.9259259,2.03252033 C19.2438619,2.03252033 22.1668326,3.44002384 23.8799805,5.57680361 C26.1496617,5.86710791 28.6666667,6.96163242 28.6666667,10.3658537 C28.6666667,14.3898056 25.1498146,15.1865643 22.6802525,15.2407979 C21.1768903,16.185578 19.1326308,16.6666667 16.712854,16.6666667 C14.0992906,16.6666667 11.537794,16.1054371 9.6177979,15.0053375 C8.78547408,15.2884923 7.94769783,15.4471545 7.16666667,15.4471545 C3.58333333,15.4471545 0,14.2276423 0,9.3495935 C0,7.57916132 1.02775171,6.210328 2.46864021,5.18479124 C2.98579244,2.25063176 5.96175925,0 9.55555556,0 Z" id="path-5"></path>
+    </defs>
+    <g id="resource/cloud_00_rain" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="resource/cloud_common" transform="translate(0.000000, -0.215447)">
+            <g id="Group" transform="translate(0.000000, 9.333333)" stroke-linecap="round" stroke-width="2">
+                <g id="content" transform="translate(1.000000, 3.000000)">
+                    <g id="cloud/rain" transform="translate(0.000000, 3.921569)" stroke="url(#linearGradient-1)">
+                        <line x1="5.05263158" y1="0" x2="0" y2="10.2941176" id="rain"></line>
+                    </g>
+                    <g id="cloud/rain" transform="translate(8.842105, 3.921569)" stroke="url(#linearGradient-1)">
+                        <line x1="5.05263158" y1="0" x2="0" y2="10.2941176" id="rain"></line>
+                    </g>
+                    <g id="cloud/rain" transform="translate(17.052632, 4.901961)" stroke="url(#linearGradient-2)">
+                        <line x1="3.78947368" y1="0" x2="0" y2="7.84313725" id="rain"></line>
+                    </g>
+                    <g id="cloud/rain" transform="translate(20.210526, 5.882353)" stroke="url(#linearGradient-2)">
+                        <line x1="3.78947368" y1="0" x2="0" y2="7.84313725" id="rain"></line>
+                    </g>
+                    <g id="cloud/rain" transform="translate(11.368421, 8.333333)" stroke="url(#linearGradient-3)">
+                        <line x1="4.42105263" y1="0" x2="0" y2="8.33333333" id="rain"></line>
+                    </g>
+                    <g id="cloud/rain" transform="translate(8.842105, 0.000000)" stroke="url(#linearGradient-4)">
+                        <line x1="4.42105263" y1="0" x2="0" y2="9.31372549" id="rain"></line>
+                    </g>
+                    <g id="cloud/rain" transform="translate(3.157895, 7.843137)" stroke="url(#linearGradient-2)">
+                        <line x1="3.78947368" y1="0" x2="0" y2="7.84313725" id="rain"></line>
+                    </g>
+                </g>
+            </g>
+            <g id="Group" transform="translate(2.000000, 1.333333)">
+                <g id="water/cloud" transform="translate(0.000000, 0.000000)">
+                    <mask id="mask-6" fill="white">
+                        <use xlink:href="#path-5"></use>
+                    </mask>
+                    <use id="foliage" stroke="#333333" fill="#EEFAFF" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-5"></use>
+                    <path d="M1.97900173,4.71627675 C1.97900173,8.75738468 4.92024219,12.0333499 8.54844617,12.0333499 C9.1527869,12.0333499 9.73806801,11.9424592 10.2938717,11.7722812 C11.042817,12.8340477 12.2150304,13.7465839 13.6659823,14.2857705 C16.7037199,15.4146207 19.8358082,14.488032 20.7549987,12.2189453 C21.7158011,12.556931 22.8819012,12.755102 24.138669,12.755102 C26.365658,12.755102 28.3079525,12.1328502 29.3347813,11.2103511 C29.4895244,11.8608438 29.5725271,12.549088 29.5725271,13.2610841 C29.5725271,17.302192 26.8986721,20.5781572 23.6003049,20.5781572 C22.1990081,20.5781572 20.910432,19.9868659 19.891724,18.9968182 C18.7984308,21.7896803 15.94918,23.7804878 12.6065573,23.7804878 C9.47337922,23.7804878 6.77368184,22.0313472 5.54687326,19.5126556 C1.92377036,19.5033407 -1.01151151,15.1387808 -1.01151151,9.75609756 C-1.01151151,5.70007991 0.655166984,2.2221616 3.02693557,0.75037056 C2.36359753,1.89373962 1.97900173,3.25498326 1.97900173,4.71627675 Z M23.6003049,5.94401088 C24.6893027,5.94401088 25.7102241,6.30111537 26.5893128,6.92495939 C25.8418852,6.7532746 25.0121772,6.65754107 24.138669,6.65754107 C22.436169,6.65754107 20.9000552,7.02120837 19.8121521,7.60467336 C20.8426629,6.56684514 22.162117,5.94401088 23.6003049,5.94401088 Z" id="shadow" fill="#87A5DC" opacity="0.3" mask="url(#mask-6)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

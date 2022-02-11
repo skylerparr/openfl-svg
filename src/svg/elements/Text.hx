@@ -1,4 +1,7 @@
 package svg.elements;
+import openfl.text.TextFieldAutoSize;
+import openfl.text.TextFormat;
+import openfl.text.TextField;
 import openfl.display.Sprite;
 import svg.core.BaseSVG;
 import svg.core.SVGElement;
@@ -17,27 +20,29 @@ class Text extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
-        var textField: view.Text = new view.Text();
-        textField.init();
+    public function render(sprite:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+        var textField: TextField = new TextField();
+        var textFormat: TextFormat = new TextFormat();
         text = inner_content;
-        doc.addChild(textField);
-        doc.x = x;
-        doc.y = y;
+        sprite.addChild(textField);
+        sprite.x = x;
+        sprite.y = y;
 
         if(font_size != null) {
-            textField.size = Std.parseInt(font_size);
+            textFormat.size = Std.parseInt(font_size);
         }
         if(font_style == "italic") {
-            textField.italic = true;
+            textFormat.italic = true;
         } else if(font_style == "bold") {
-            textField.bold = true;
+            textFormat.bold = true;
         }
         if(fill != null) {
             var fillColor: Int = SVGRender.getColor(fill);
-            textField.color = fillColor;
+            textFormat.color = fillColor;
         }
         textField.text = text;
-        textField.autoSize = 1;
+        textField.autoSize = TextFieldAutoSize.LEFT;
+        textField.setTextFormat(textFormat);
+        textField.defaultTextFormat = textFormat;
     }
 }

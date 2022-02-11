@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>resource/exports/stone_00</title>
+    <g id="resource/stone_00" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M9,13 C11.4514643,13 13.6925262,14.3850525 14.7888544,16.5777088 L15,17 L15,17 C13.6666667,17.6666667 12.3333333,18 11,18 C9,18 7.66666667,17.6666667 7,17 C6.84619607,15.93451 7.19547109,14.8579614 7.94550991,14.0857138 L9,13 L9,13 Z" id="Rectangle" stroke="#333333" fill="#736B64" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M9,13 C9,13 9.33333333,13.3333333 10,14 C11,15 10.7384615,16 11,18 C9,18 7.66666667,17.6666667 7,17 C6.78873963,15.9453538 7.12223888,14.8551837 7.88738702,14.0992354 L9,13 L9,13 Z" id="Rectangle" fill="#222222" opacity="0.3"></path>
+    </g>
+</svg>

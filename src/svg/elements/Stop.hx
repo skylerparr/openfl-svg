@@ -10,6 +10,6 @@ class Stop extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+    public function render(sprite:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
     }
 }

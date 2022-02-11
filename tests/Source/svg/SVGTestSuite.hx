@@ -547,77 +547,84 @@ That\'s why the circles have different x positions, but the same stroke value.
     }
 
     public static function testResource():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}svg/cloud_00.svg');
+        var content = File.getContent('${getAssetPath()}svg/cloud_00.svg');
        return SVGParser.parse(content);
     }
 
     public static function testResource1():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}svg/cloud_00_rain.svg');
+        var content = File.getContent('${getAssetPath()}svg/cloud_00_rain.svg');
        return SVGParser.parse(content);
     }
 
     public static function testResource2():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}svg/stone_00.svg');
+        var content = File.getContent('${getAssetPath()}svg/stone_00.svg');
        return SVGParser.parse(content);
     }
 
     public static function testResource3():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}svg/stone_01.svg');
+        var content = File.getContent('${getAssetPath()}svg/stone_01.svg');
        return SVGParser.parse(content);
     }
 
     public static function testResource4():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}svg/stone_02.svg');
+        var content = File.getContent('${getAssetPath()}svg/stone_02.svg');
        return SVGParser.parse(content);
     }
 
     public static function testResource5():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}svg/tree_00.svg');
+        var content = File.getContent('${getAssetPath()}svg/tree_00.svg');
        return SVGParser.parse(content);
     }
 
     public static function testResource6():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}svg/tree_evergreen00.svg');
+        var content = File.getContent('${getAssetPath()}svg/tree_evergreen00.svg');
        return SVGParser.parse(content);
     }
 
     public static function testChar():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}avatars/test-char.svg');
+        var content = File.getContent('${getAssetPath()}avatars/test-char.svg');
        return SVGParser.parse(content);
     }
 
     public static function testChar2():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}avatars/panda-flat.svg');
+        var content = File.getContent('${getAssetPath()}avatars/panda-flat.svg');
         return SVGParser.parse(content);
     }
 
     public static function testChar3():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}avatars/cabearet-flat.svg');
+        var content = File.getContent('${getAssetPath()}avatars/cabearet-flat.svg');
         return SVGParser.parse(content);
     }
 
     public static function testChar4():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}avatars/Bubbles_flat.svg');
+        var content = File.getContent('${getAssetPath()}avatars/Bubbles_flat.svg');
         return SVGParser.parse(content);
     }
 
     public static function testAvatar12200():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}avatars/test_avatar_1_22_00.svg');
+        var content = File.getContent('${getAssetPath()}avatars/test_avatar_1_22_00.svg');
         return SVGParser.parse(content);
     }
 
     public static function testAvatar12201():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}avatars/test_avatar_1_22_01.svg');
+        var content = File.getContent('${getAssetPath()}avatars/test_avatar_1_22_01.svg');
         return SVGParser.parse(content);
     }
 
     public static function testAvatar12202():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}avatars/test_avatar_1_22_02.svg');
+        var content = File.getContent('${getAssetPath()}avatars/test_avatar_1_22_02.svg');
         return SVGParser.parse(content);
     }
 
     public static function testAvatar12203():SVG {
-        var content = File.getContent('${Environment.getApplicationSettings().getBaseAssetsPath()}avatars/test_avatar_1_22_03.svg');
+        var content = File.getContent('${getAssetPath()}avatars/test_avatar_1_22_03.svg');
         return SVGParser.parse(content);
+    }
+
+    public static inline function getAssetPath(): String {
+        trace(Sys.getCwd());
+        var path = Sys.getCwd();
+        path = StringTools.replace(path, "\\", "/");
+        return '${StringTools.replace(path, "Export/windows/bin", "")}Assets/';
     }
 }

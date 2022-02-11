@@ -22,7 +22,7 @@ class RadialGradient extends BaseSVG implements SVGElement {
         super();
     }
 
-    public function render(doc:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
+    public function render(sprite:Sprite, defs:Map<String, SVGElement>, inherit:SVGElement = null):Void {
         var matr: Matrix = new Matrix();
         var rotation: Float = MathUtil.degreesToRadians(0);
         if (gradientTransform != null) {
